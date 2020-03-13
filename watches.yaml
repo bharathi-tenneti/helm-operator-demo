@@ -9,5 +9,10 @@
   kind: Nginx
   chart: helm-charts/nginx
 
+- version: v1alpha1
+  group: charts.helm.k8s.io
+  kind: Mongodb
+  chart: helm-charts/mongodb
+
 
 

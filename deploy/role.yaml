@@ -25,10 +25,11 @@ rules:
   verbs:
   - '*'
 - apiGroups:
-  - ""
+  - apps
   resources:
   - serviceaccounts
   - services
+  - deployments
   verbs:
   - '*'
 - apiGroups:
@@ -36,6 +37,9 @@ rules:
   resources:
   - deployments
   - statefulsets
+  - persistentvolumeclaims
+  - secrets
+  - services
   verbs:
   - '*'
 - apiGroups:
@@ -80,6 +84,18 @@ rules:
   - watch
 - apiGroups:
   - example.com
+  resources:
+  - '*'
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - charts.helm.k8s.io
   resources:
   - '*'
   verbs:
