@@ -29,10 +29,10 @@ uninstall: ## Uninstall all that are performed in the $ make install
 	@echo ....... Deleting CR and CRD.......
 	- kubectl delete -f deploy/crds/cache.example.com_v1alpha1_memcached_cr.yaml -n ${NAMESPACE}
 	- kubectl delete -f deploy/crds/cache.example.com_memcacheds_crd.yaml -n ${NAMESPACE}
-	- kubectl delete -f deploy/crds/example.com_v1alpha1_nginx_cr.yaml
-	- kubectl delete -f deploy/crds/example.com_nginxes_crd.yaml
-	- kubectl delete -f deploy/crds/charts.helm.k8s.io_v1alpha1_mongodb_cr.yaml
-	- kubectl delete -f deploy/crds/charts.helm.k8s.io_mongodbs_crd.yaml
+	- kubectl delete -f deploy/crds/example.com_v1alpha1_nginx_cr.yaml -n ${NAMESPACE}
+	- kubectl delete -f deploy/crds/example.com_nginxes_crd.yaml -n ${NAMESPACE}
+	- kubectl delete -f deploy/crds/charts.helm.k8s.io_v1alpha1_mongodb_cr.yaml -n ${NAMESPACE}
+	- kubectl delete -f deploy/crds/charts.helm.k8s.io_mongodbs_crd.yaml -n ${NAMESPACE}
 	@echo ....... Deleting Rules and Service Account .......
 	- kubectl delete -f deploy/role.yaml -n ${NAMESPACE}
 	- kubectl delete -f deploy/role_binding.yaml -n ${NAMESPACE}

@@ -25,21 +25,20 @@ rules:
   verbs:
   - '*'
 - apiGroups:
-  - apps
+  - ""
   resources:
   - serviceaccounts
   - services
   - deployments
+  - persistentvolumeclaims
+  - secrets
   verbs:
   - '*'
 - apiGroups:
   - apps
   resources:
-  - deployments
+  - deployments 
   - statefulsets
-  - persistentvolumeclaims
-  - secrets
-  - services
   verbs:
   - '*'
 - apiGroups:
