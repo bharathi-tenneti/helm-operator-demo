@@ -1,0 +1,206 @@
+controller:
+  addHeaders: {}
+  admissionWebhooks:
+    enabled: false
+    failurePolicy: Fail
+    patch:
+      enabled: true
+      image:
+        pullPolicy: IfNotPresent
+        repository: jettech/kube-webhook-certgen
+        tag: v1.0.0
+      nodeSelector: {}
+      podAnnotations: {}
+      priorityClassName: ""
+    port: 8443
+    service:
+      annotations: {}
+      externalIPs: []
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      omitClusterIP: false
+      servicePort: 443
+      type: ClusterIP
+  affinity: {}
+  autoscaling:
+    enabled: false
+    maxReplicas: 11
+    minReplicas: 1
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: 50
+  config: {}
+  configMapNamespace: ""
+  containerPort:
+    http: 80
+    https: 443
+  customTemplate:
+    configMapKey: ""
+    configMapName: ""
+  daemonset:
+    hostPorts:
+      http: 80
+      https: 443
+    useHostPort: false
+  defaultBackendService: ""
+  deploymentAnnotations: {}
+  dnsConfig: {}
+  dnsPolicy: ClusterFirst
+  electionID: ingress-controller-leader
+  extraArgs: {}
+  extraContainers: []
+  extraEnvs: []
+  extraInitContainers: []
+  extraVolumeMounts: []
+  extraVolumes: []
+  hostNetwork: false
+  image:
+    allowPrivilegeEscalation: true
+    pullPolicy: IfNotPresent
+    repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+    runAsUser: 101
+    tag: 0.29.0
+  ingressClass: nginx
+  kind: Deployment
+  lifecycle: {}
+  livenessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    port: 10254
+    successThreshold: 1
+    timeoutSeconds: 1
+  metrics:
+    enabled: false
+    port: 10254
+    prometheusRule:
+      additionalLabels: {}
+      enabled: false
+      namespace: ""
+      rules: []
+    service:
+      annotations: {}
+      externalIPs: []
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      omitClusterIP: false
+      servicePort: 9913
+      type: ClusterIP
+    serviceMonitor:
+      additionalLabels: {}
+      enabled: false
+      namespace: ""
+      namespaceSelector: {}
+      scrapeInterval: 30s
+  minAvailable: 1
+  minReadySeconds: 0
+  name: controller
+  nodeSelector: {}
+  podAnnotations: {}
+  podLabels: {}
+  podSecurityContext: {}
+  priorityClassName: ""
+  proxySetHeaders: {}
+  publishService:
+    enabled: false
+    pathOverride: ""
+  readinessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    port: 10254
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  reportNodeInternalIp: false
+  resources: {}
+  scope:
+    enabled: false
+    namespace: ""
+  service:
+    annotations: {}
+    enableHttp: true
+    enableHttps: true
+    enabled: true
+    externalIPs: []
+    externalTrafficPolicy: ""
+    healthCheckNodePort: 0
+    labels: {}
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePorts:
+      http: ""
+      https: ""
+      tcp: {}
+      udp: {}
+    omitClusterIP: false
+    ports:
+      http: 80
+      https: 443
+    sessionAffinity: ""
+    targetPorts:
+      http: http
+      https: https
+    type: LoadBalancer
+  tcp:
+    configMapNamespace: ""
+  terminationGracePeriodSeconds: 60
+  tolerations: []
+  udp:
+    configMapNamespace: ""
+  updateStrategy: {}
+defaultBackend:
+  affinity: {}
+  enabled: true
+  extraArgs: {}
+  extraEnvs: []
+  image:
+    pullPolicy: IfNotPresent
+    repository: k8s.gcr.io/defaultbackend-amd64
+    runAsUser: 65534
+    tag: "1.5"
+  livenessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  maxmindLicenseKey: ""
+  minAvailable: 1
+  name: default-backend
+  nodeSelector: {}
+  podAnnotations: {}
+  podLabels: {}
+  podSecurityContext: {}
+  port: 8080
+  priorityClassName: ""
+  readinessProbe:
+    failureThreshold: 6
+    initialDelaySeconds: 0
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 5
+  replicaCount: 1
+  resources: {}
+  service:
+    annotations: {}
+    externalIPs: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    omitClusterIP: false
+    servicePort: 80
+    type: ClusterIP
+  serviceAccount:
+    create: true
+    name: null
+  tolerations: []
+imagePullSecrets: []
+podSecurityPolicy:
+  enabled: false
+rbac:
+  create: true
+revisionHistoryLimit: 10
+serviceAccount:
+  create: true
+  name: null
+tcp: {}
+udp: {}
